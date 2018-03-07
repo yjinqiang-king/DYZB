@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		1459D03C204F824700BC38BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459D03B204F824700BC38BE /* AppDelegate.swift */; };
 		1459D043204F824700BC38BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1459D042204F824700BC38BE /* Assets.xcassets */; };
+		1459D06A204F8A7D00BC38BE /* YJQTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459D069204F8A7D00BC38BE /* YJQTabBarViewController.swift */; };
+		1459D06C204F8AA200BC38BE /* YJQNaVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459D06B204F8AA200BC38BE /* YJQNaVViewController.swift */; };
+		1459D06E204F8AF700BC38BE /* YJQHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459D06D204F8AF700BC38BE /* YJQHomeViewController.swift */; };
+		1459D070204F8B0600BC38BE /* YJQLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459D06F204F8B0600BC38BE /* YJQLiveViewController.swift */; };
+		1459D072204F8B1600BC38BE /* YJQFollowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459D071204F8B1600BC38BE /* YJQFollowViewController.swift */; };
+		1459D074204F8B2C00BC38BE /* YJQProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459D073204F8B2C00BC38BE /* YJQProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +22,12 @@
 		1459D03B204F824700BC38BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1459D042204F824700BC38BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1459D047204F824700BC38BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1459D069204F8A7D00BC38BE /* YJQTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQTabBarViewController.swift; sourceTree = "<group>"; };
+		1459D06B204F8AA200BC38BE /* YJQNaVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQNaVViewController.swift; sourceTree = "<group>"; };
+		1459D06D204F8AF700BC38BE /* YJQHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQHomeViewController.swift; sourceTree = "<group>"; };
+		1459D06F204F8B0600BC38BE /* YJQLiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQLiveViewController.swift; sourceTree = "<group>"; };
+		1459D071204F8B1600BC38BE /* YJQFollowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQFollowViewController.swift; sourceTree = "<group>"; };
+		1459D073204F8B2C00BC38BE /* YJQProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +94,7 @@
 		1459D04F204F88EE00BC38BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1459D071204F8B1600BC38BE /* YJQFollowViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -113,6 +126,7 @@
 		1459D053204F88EE00BC38BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1459D06D204F8AF700BC38BE /* YJQHomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -144,6 +158,7 @@
 		1459D057204F88EE00BC38BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1459D06F204F8B0600BC38BE /* YJQLiveViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -175,6 +190,8 @@
 		1459D05B204F88EE00BC38BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1459D069204F8A7D00BC38BE /* YJQTabBarViewController.swift */,
+				1459D06B204F8AA200BC38BE /* YJQNaVViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -206,6 +223,7 @@
 		1459D05F204F88EE00BC38BE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1459D073204F8B2C00BC38BE /* YJQProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -257,6 +275,7 @@
 		1459D030204F824700BC38BE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = YJQ;
 				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = YJQ;
@@ -302,6 +321,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1459D03C204F824700BC38BE /* AppDelegate.swift in Sources */,
+				1459D070204F8B0600BC38BE /* YJQLiveViewController.swift in Sources */,
+				1459D06A204F8A7D00BC38BE /* YJQTabBarViewController.swift in Sources */,
+				1459D06E204F8AF700BC38BE /* YJQHomeViewController.swift in Sources */,
+				1459D074204F8B2C00BC38BE /* YJQProfileViewController.swift in Sources */,
+				1459D072204F8B1600BC38BE /* YJQFollowViewController.swift in Sources */,
+				1459D06C204F8AA200BC38BE /* YJQNaVViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

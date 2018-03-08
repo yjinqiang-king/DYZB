@@ -63,6 +63,10 @@ extension YJQPageContentView: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier, for: indexPath)
+        //给cell设置内容
+        for view in cell.contentView.subviews {
+            view.removeFromSuperview()
+        }
         let childVC = viewControllers[indexPath.item]
         childVC.view.frame = cell.contentView.bounds
         cell.contentView.addSubview(childVC.view)

@@ -6,4 +6,10 @@
 //  Copyright © 2018年 YJQ. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+let kStateHeight: CGFloat = 20
+let kNavigationHeight: CGFloat = 44
+
+let kScreenWidth = UIScreen.main.bounds.size.width
+let kScreenHeight = UIScreen.main.bounds.size.height

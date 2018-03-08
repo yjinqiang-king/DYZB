@@ -10,6 +10,12 @@ import UIKit
 
 class YJQHomeViewController: UIViewController {
 
+    // MARK: - 懒加载属性
+    private lazy var pageTitleView: YJQPageTitleView = {
+        let titles: [String] = ["推荐","游戏","娱乐","趣玩","测试"]
+        let pageTitleView = YJQPageTitleView(frame: CGRect(x: 0, y:kStateHeight + kNavigationHeight, width: kScreenWidth, height: 40), titles: titles)
+        return pageTitleView
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -27,9 +33,14 @@ class YJQHomeViewController: UIViewController {
 extension YJQHomeViewController {
     private func setupUI() {
         self.view.backgroundColor = UIColor.cyan
+        //设置navigationItem
         setupNavigationItem()
+        //添加选择标题工具栏
+        self.view.addSubview(pageTitleView)
     }
-    //设置导航栏的左右Item
+}
+// MARK: - 设置导航栏的左右Item
+extension YJQHomeViewController {
     private func setupNavigationItem() {
         let size = CGSize(width: 40, height: 40)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", normalImg: "logo", highlightedImg: "", size: CGSize.zero, target: self, action: #selector(logoItemClick), controlEvent: UIControlEvents.touchUpInside)
@@ -38,7 +49,6 @@ extension YJQHomeViewController {
         let scanItem = UIBarButtonItem(title: "", normalImg: "Image_scan", highlightedImg: "Image_scan_click", size: size, target: self, action: #selector(scanItemClick), controlEvent: UIControlEvents.touchUpInside)
         self.navigationItem.rightBarButtonItems = [historyItem,searchItem,scanItem]
     }
-    
 }
 // MARK: - 导航栏Item点击方法
 extension YJQHomeViewController {
@@ -55,3 +65,4 @@ extension YJQHomeViewController {
         print("点击scanItem")
     }
 }
+

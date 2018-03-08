@@ -19,6 +19,7 @@
 		1459D079204F976E00BC38BE /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459D078204F976E00BC38BE /* UIBarButtonItem+Extension.swift */; };
 		1459D07B204FB4E700BC38BE /* YJQPageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459D07A204FB4E700BC38BE /* YJQPageTitleView.swift */; };
 		1459D07D204FB6D400BC38BE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459D07C204FB6D400BC38BE /* UIColor+Extension.swift */; };
+		1459D07F2050D65200BC38BE /* YJQPageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459D07E2050D65200BC38BE /* YJQPageContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		1459D078204F976E00BC38BE /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		1459D07A204FB4E700BC38BE /* YJQPageTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQPageTitleView.swift; sourceTree = "<group>"; };
 		1459D07C204FB6D400BC38BE /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		1459D07E2050D65200BC38BE /* YJQPageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQPageContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				1459D07A204FB4E700BC38BE /* YJQPageTitleView.swift */,
+				1459D07E2050D65200BC38BE /* YJQPageContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 			files = (
 				1459D077204F973200BC38BE /* Common.swift in Sources */,
 				1459D07B204FB4E700BC38BE /* YJQPageTitleView.swift in Sources */,
+				1459D07F2050D65200BC38BE /* YJQPageContentView.swift in Sources */,
 				1459D03C204F824700BC38BE /* AppDelegate.swift in Sources */,
 				1459D07D204FB6D400BC38BE /* UIColor+Extension.swift in Sources */,
 				1459D070204F8B0600BC38BE /* YJQLiveViewController.swift in Sources */,

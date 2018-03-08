@@ -9,12 +9,25 @@
 import UIKit
 
 class YJQHomeViewController: UIViewController {
-
+    // MARK: - 定义属性
+    private let kPageTitleViewH: CGFloat = 40
     // MARK: - 懒加载属性
     private lazy var pageTitleView: YJQPageTitleView = {
         let titles: [String] = ["推荐","游戏","娱乐","趣玩","测试"]
-        let pageTitleView = YJQPageTitleView(frame: CGRect(x: 0, y:kStateHeight + kNavigationHeight, width: kScreenWidth, height: 40), titles: titles)
+        let pageTitleView = YJQPageTitleView(frame: CGRect(x: 0, y:kStateHeight + kNavigationHeight, width: kScreenWidth, height: kPageTitleViewH), titles: titles)
         return pageTitleView
+    }()
+    private lazy var pageContentView: YJQPageContentView = {
+        let contentViewY = kStateHeight + kNavigationHeight + kPageTitleViewH
+        let contentFrame = CGRect(x: 0, y: contentViewY, width: kScreenWidth, height: kScreenHeight - contentViewY)
+        var childVCs = [UIViewController]()
+        for i in 0..<4 {
+            let vc = UIViewController()
+            vc.view.backgroundColor = UIColor(r: CGFloat(arc4random_uniform(255)), g: CGFloat(arc4random_uniform(255)), b: CGFloat(arc4random_uniform(255)), alpha: 1.0)
+            childVCs.append(vc)
+        }
+        let pageContentView = YJQPageContentView(frame: contentFrame, viewControllers: childVCs, parentController: self)
+        return pageContentView
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +45,13 @@ class YJQHomeViewController: UIViewController {
 // MARK: - 设置UI
 extension YJQHomeViewController {
     private func setupUI() {
-        self.view.backgroundColor = UIColor.cyan
+        self.view.backgroundColor = .white
         //设置navigationItem
         setupNavigationItem()
         //添加选择标题工具栏
         self.view.addSubview(pageTitleView)
+        //添加pageContentView
+        self.view.addSubview(pageContentView)
     }
 }
 // MARK: - 设置导航栏的左右Item

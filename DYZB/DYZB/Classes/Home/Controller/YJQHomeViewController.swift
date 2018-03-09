@@ -19,9 +19,10 @@ class YJQHomeViewController: UIViewController {
     }()
     private lazy var pageContentView: YJQPageContentView = {
         let contentViewY = kStateHeight + kNavigationHeight + kPageTitleViewH
-        let contentFrame = CGRect(x: 0, y: contentViewY, width: kScreenWidth, height: kScreenHeight - contentViewY)
+        let contentFrame = CGRect(x: 0, y: contentViewY, width: kScreenWidth, height: kScreenHeight - contentViewY - kTabbarHeight)
         var childVCs = [UIViewController]()
-        for i in 0..<4 {
+        childVCs.append(YJQRecommandViewController())
+        for i in 0..<3 {
             let vc = UIViewController()
             vc.view.backgroundColor = UIColor(r: CGFloat(arc4random_uniform(255)), g: CGFloat(arc4random_uniform(255)), b: CGFloat(arc4random_uniform(255)), alpha: 1.0)
             childVCs.append(vc)

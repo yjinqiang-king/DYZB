@@ -13,7 +13,7 @@ class YJQHomeViewController: UIViewController {
     private let kPageTitleViewH: CGFloat = 40
     // MARK: - 懒加载属性
     private lazy var pageTitleView: YJQPageTitleView = {
-        let titles: [String] = ["推荐","游戏","娱乐","趣玩","测试"]
+        let titles: [String] = ["推荐","游戏","娱乐","趣玩"]
         let pageTitleView = YJQPageTitleView(frame: CGRect(x: 0, y:kStateHeight + kNavigationHeight, width: kScreenWidth, height: kPageTitleViewH), titles: titles)
         return pageTitleView
     }()
@@ -52,6 +52,12 @@ extension YJQHomeViewController {
         self.view.addSubview(pageTitleView)
         //添加pageContentView
         self.view.addSubview(pageContentView)
+        pageContentView.closure = { [weak self] (progress, sourceIndex, targetIndex) in
+            self?.pageTitleView.setTitleWithProgress(progress: progress, sourceIndex: sourceIndex, targetIndex: targetIndex)
+        }
+        pageTitleView.pageTitleViewClosure = { [weak self] (number) in
+            self?.pageContentView.pageScrollWithNumber(number: number)
+        }
     }
 }
 // MARK: - 设置导航栏的左右Item

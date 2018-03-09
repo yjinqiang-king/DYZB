@@ -13,8 +13,6 @@ class YJQPageTitleView: UIView {
     private let kNormalColor: (CGFloat, CGFloat, CGFloat) = (85,85,85)
     private let kSelectedColcor: (CGFloat, CGFloat, CGFloat) = (225,128,0)
     private let kScrollLineH: CGFloat = 2
-    //记录被选中的label的下标
-    private var currentIndex: Int
     // MARK: - 懒加载
     private lazy var labels: [UILabel] = [UILabel]()
     private lazy var scrollView: UIScrollView = {
@@ -30,6 +28,9 @@ class YJQPageTitleView: UIView {
     }()
     // MARK: - 定义属性
     private var titles:[String]
+    //记录被选中的label的下标
+    private var currentIndex: Int
+    var pageTitleViewClosure:((Int)->())?
     // MARK: - 自定义构造函数
     init(frame: CGRect, titles:[String]) {
         self.titles = titles
@@ -102,6 +103,7 @@ extension YJQPageTitleView {
 extension YJQPageTitleView {
     @objc private func labelClick(gesture:UIGestureRecognizer) {
         let label = gesture.view as! UILabel
+        let number = label.tag - currentIndex
         let beforeLabel = labels[currentIndex]
         beforeLabel.textColor = UIColor(r: kNormalColor.0, g: kNormalColor.1, b: kNormalColor.2, alpha: 1.0)
         label.textColor = UIColor(r: kSelectedColcor.0, g: kSelectedColcor.1, b: kSelectedColcor.2, alpha: 1.0)
@@ -109,5 +111,25 @@ extension YJQPageTitleView {
         UIView.animate(withDuration: 0.1) {
             self.scrollLineView.frame.origin.x += label.bounds.width * CGFloat(self.currentIndex - beforeLabel.tag)
         }
+        if pageTitleViewClosure != nil {
+            pageTitleViewClosure!(currentIndex)
+        }
+    }
+}
+// MARK: - 用于外界调用的方法
+extension YJQPageTitleView {
+    func setTitleWithProgress(progress: CGFloat, sourceIndex: Int, targetIndex: Int) {
+        let sourceLabel = labels[sourceIndex]
+        let targetLabel = labels[targetIndex]
+        
+        let moveTotalX = targetLabel.frame.origin.x - sourceLabel.frame.origin.x
+        
+        let colorScale = (kSelectedColcor.0 - kNormalColor.0, kSelectedColcor.1 - kNormalColor.1, kSelectedColcor.2 - kNormalColor.2)
+        sourceLabel.textColor = UIColor(r: kSelectedColcor.0 - colorScale.0 * progress, g: kSelectedColcor.1 - colorScale.1 * progress, b: kSelectedColcor.2 - colorScale.2 * progress, alpha: 1.0)
+        targetLabel.textColor = UIColor(r: kNormalColor.0 + colorScale.0 * progress, g: kNormalColor.1 + colorScale.1 * progress, b: kNormalColor.2 + colorScale.2 * progress, alpha: 1.0)
+        
+        scrollLineView.frame.origin.x = sourceLabel.frame.origin.x + moveTotalX * progress
+        
+        currentIndex = targetIndex
     }
 }

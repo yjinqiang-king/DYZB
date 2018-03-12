@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		140CD2BB20526123004E0D15 /* YJQRecommandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140CD2BA20526123004E0D15 /* YJQRecommandViewController.swift */; };
 		140CD2BD20526D53004E0D15 /* YJQHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140CD2BC20526D53004E0D15 /* YJQHeaderCollectionReusableView.swift */; };
+		140CD2BF20561E13004E0D15 /* YJQNormalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140CD2BE20561E13004E0D15 /* YJQNormalCollectionViewCell.swift */; };
+		140CD2C120561EA1004E0D15 /* YJQPrettyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140CD2C020561EA1004E0D15 /* YJQPrettyCollectionViewCell.swift */; };
 		1459D03C204F824700BC38BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459D03B204F824700BC38BE /* AppDelegate.swift */; };
 		1459D043204F824700BC38BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1459D042204F824700BC38BE /* Assets.xcassets */; };
 		1459D06A204F8A7D00BC38BE /* YJQTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459D069204F8A7D00BC38BE /* YJQTabBarViewController.swift */; };
@@ -29,6 +31,8 @@
 		0041A88368633407CBFC67E1 /* Pods-DYZB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DYZB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DYZB/Pods-DYZB.debug.xcconfig"; sourceTree = "<group>"; };
 		140CD2BA20526123004E0D15 /* YJQRecommandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQRecommandViewController.swift; sourceTree = "<group>"; };
 		140CD2BC20526D53004E0D15 /* YJQHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		140CD2BE20561E13004E0D15 /* YJQNormalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQNormalCollectionViewCell.swift; sourceTree = "<group>"; };
+		140CD2C020561EA1004E0D15 /* YJQPrettyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQPrettyCollectionViewCell.swift; sourceTree = "<group>"; };
 		1459D038204F824700BC38BE /* DYZB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DYZB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1459D03B204F824700BC38BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1459D042204F824700BC38BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				140CD2BC20526D53004E0D15 /* YJQHeaderCollectionReusableView.swift */,
+				140CD2BE20561E13004E0D15 /* YJQNormalCollectionViewCell.swift */,
+				140CD2C020561EA1004E0D15 /* YJQPrettyCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -379,11 +385,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DYZB/Pods-DYZB-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Snap/Snap.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Snap.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -433,6 +439,7 @@
 				1459D077204F973200BC38BE /* Common.swift in Sources */,
 				1459D07B204FB4E700BC38BE /* YJQPageTitleView.swift in Sources */,
 				1459D07F2050D65200BC38BE /* YJQPageContentView.swift in Sources */,
+				140CD2BF20561E13004E0D15 /* YJQNormalCollectionViewCell.swift in Sources */,
 				1459D03C204F824700BC38BE /* AppDelegate.swift in Sources */,
 				1459D07D204FB6D400BC38BE /* UIColor+Extension.swift in Sources */,
 				1459D070204F8B0600BC38BE /* YJQLiveViewController.swift in Sources */,
@@ -442,6 +449,7 @@
 				1459D074204F8B2C00BC38BE /* YJQProfileViewController.swift in Sources */,
 				1459D072204F8B1600BC38BE /* YJQFollowViewController.swift in Sources */,
 				1459D079204F976E00BC38BE /* UIBarButtonItem+Extension.swift in Sources */,
+				140CD2C120561EA1004E0D15 /* YJQPrettyCollectionViewCell.swift in Sources */,
 				1459D06C204F8AA200BC38BE /* YJQNaVViewController.swift in Sources */,
 				140CD2BB20526123004E0D15 /* YJQRecommandViewController.swift in Sources */,
 			);

@@ -11,8 +11,10 @@ import UIKit
 private let kItemMargin: CGFloat = 10
 private let kItemW: CGFloat = (kScreenWidth - 3 * kItemMargin) / 2
 private let kItemH: CGFloat = kItemW * 3 / 4
+private let kPrettyItemH: CGFloat = kItemW * 4 / 3
 private let kHeaderViewH: CGFloat = 50
-private let kCellIdentifier = "kCellIdentifier"
+private let kNormalCellIdentifier = "kNormalCellIdentifier"
+private let kPrettyCellIdentifier = "kPrettyCellIdentifier"
 private let kHeaderViewIdentifier = "kHeaderViewIdentifier"
 
 class YJQRecommandViewController: UIViewController {
@@ -26,12 +28,15 @@ class YJQRecommandViewController: UIViewController {
         //调整Item内边距
         layout.sectionInset = UIEdgeInsets(top: 0, left: kItemMargin, bottom: 0, right: kItemMargin)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .white
         collectionView.showsVerticalScrollIndicator = false
         collectionView.dataSource = self
+        collectionView.delegate = self
         //根据父控件的大小缩放
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: kCellIdentifier)
-        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: kHeaderViewIdentifier)
+        collectionView.register(YJQNormalCollectionViewCell.self, forCellWithReuseIdentifier: kNormalCellIdentifier)
+        collectionView.register(YJQPrettyCollectionViewCell.self, forCellWithReuseIdentifier: kPrettyCellIdentifier)
+        collectionView.register(YJQHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: kHeaderViewIdentifier)
         return collectionView
     }()
     override func viewDidLoad() {
@@ -66,13 +71,25 @@ extension YJQRecommandViewController: UICollectionViewDataSource {
         return 4
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCellIdentifier, for: indexPath)
-        cell.contentView.backgroundColor = UIColor.yellow
+        var cell: UICollectionViewCell
+        if indexPath.section == 1 {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: kPrettyCellIdentifier, for: indexPath)
+        }else {
+            cell =  collectionView.dequeueReusableCell(withReuseIdentifier: kNormalCellIdentifier, for: indexPath)
+        }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: kHeaderViewIdentifier, for: indexPath)
-        headerView.backgroundColor = UIColor.green
         return headerView
+    }
+}
+// MARK: - UICollectionViewDelegateFlowLayout
+extension YJQRecommandViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.section == 1 {
+            return CGSize(width: kItemW, height: kPrettyItemH)
+        }
+        return CGSize(width: kItemW, height: kItemH)
     }
 }

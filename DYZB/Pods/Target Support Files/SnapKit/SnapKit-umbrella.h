@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double SnapVersionNumber;
-FOUNDATION_EXPORT const unsigned char SnapVersionString[];
+FOUNDATION_EXPORT double SnapKitVersionNumber;
+FOUNDATION_EXPORT const unsigned char SnapKitVersionString[];
 

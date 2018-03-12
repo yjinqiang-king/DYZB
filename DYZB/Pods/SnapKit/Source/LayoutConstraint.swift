@@ -1,7 +1,7 @@
 //
-//  Snap
+//  SnapKit
 //
-//  Copyright (c) 2011-2014 Masonry Team - https://github.com/Masonry
+//  Copyright (c) 2011-Present SnapKit Team - https://github.com/SnapKit
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -21,58 +21,36 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS)
-import UIKit
+#if os(iOS) || os(tvOS)
+    import UIKit
 #else
-import AppKit
+    import AppKit
 #endif
 
-/**
- * ConstraintItem is a class that is used while building constraints.
- */
-public class ConstraintItem {
+
+public class LayoutConstraint : NSLayoutConstraint {
     
-    internal init(object: AnyObject?, attributes: ConstraintAttributes) {
-        self.object = object
-        self.attributes = attributes
-    }
-    
-    internal weak var object: AnyObject?
-    internal var attributes: ConstraintAttributes
-    
-    internal var view: View? {
+    public var label: String? {
         get {
-            if let view = self.object as? View {
-                return view
-            }
-            return nil
+            return self.identifier
+        }
+        set {
+            self.identifier = newValue
         }
     }
     
-    #if os(iOS)
-    internal var layoutSupport: UILayoutSupport? {
-        get {
-            if let layoutSupport = self.object as? UILayoutSupport {
-                return layoutSupport
-            }
-            return nil
-        }
-    }
-    #endif
+    internal weak var constraint: Constraint? = nil
+    
 }
 
-
-internal func ==(left: ConstraintItem, right: ConstraintItem) -> Bool {
-    if left.object == nil {
-        return false
-    }
-    if right.object == nil {
-        return false
-    }
-    if left.object !== right.object {
-        return false
-    }
-    if left.attributes != right.attributes {
+internal func ==(lhs: LayoutConstraint, rhs: LayoutConstraint) -> Bool {
+    guard lhs.firstItem === rhs.firstItem &&
+          lhs.secondItem === rhs.secondItem &&
+          lhs.firstAttribute == rhs.firstAttribute &&
+          lhs.secondAttribute == rhs.secondAttribute &&
+          lhs.relation == rhs.relation &&
+          lhs.priority == rhs.priority &&
+          lhs.multiplier == rhs.multiplier else {
         return false
     }
     return true

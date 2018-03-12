@@ -1,6 +1,0 @@
-framework module Snap {
-  umbrella header "Snap-umbrella.h"
-
-  export *
-  module * { export * }
-}

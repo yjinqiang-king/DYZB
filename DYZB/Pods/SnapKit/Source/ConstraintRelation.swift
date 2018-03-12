@@ -1,8 +1,7 @@
 //
-//  Constraint.swift
-//  Snap
+//  SnapKit
 //
-//  Copyright (c) 2011-2014 Masonry Team - https://github.com/Masonry
+//  Copyright (c) 2011-Present SnapKit Team - https://github.com/SnapKit
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -21,3 +20,29 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
+
+#if os(iOS) || os(tvOS)
+    import UIKit
+#else
+    import AppKit
+#endif
+
+
+internal enum ConstraintRelation : Int {
+    case equal = 1
+    case lessThanOrEqual
+    case greaterThanOrEqual
+    
+    internal var layoutRelation: LayoutRelation {
+        get {
+            switch(self) {
+            case .equal:
+                return .equal
+            case .lessThanOrEqual:
+                return .lessThanOrEqual
+            case .greaterThanOrEqual:
+                return .greaterThanOrEqual
+            }
+        }
+    }
+}

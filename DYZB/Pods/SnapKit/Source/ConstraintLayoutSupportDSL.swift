@@ -1,7 +1,7 @@
 //
-//  Snap
+//  SnapKit
 //
-//  Copyright (c) 2011-2014 Masonry Team - https://github.com/Masonry
+//  Copyright (c) 2011-Present SnapKit Team - https://github.com/SnapKit
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -21,28 +21,36 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#if os(iOS)
-import UIKit
+#if os(iOS) || os(tvOS)
+    import UIKit
 #else
-import AppKit
+    import AppKit
 #endif
 
-/**
- * ConstraintRelation is an Int enum that maps to NSLayoutRelation.
- */
-internal enum ConstraintRelation: Int {
-    case Equal = 1, LessThanOrEqualTo, GreaterThanOrEqualTo
+
+@available(iOS 8.0, *)
+public struct ConstraintLayoutSupportDSL: ConstraintDSL {
     
-    internal var layoutRelation: NSLayoutRelation {
-        get {
-            switch(self) {
-            case .LessThanOrEqualTo:
-                return .LessThanOrEqual
-            case .GreaterThanOrEqualTo:
-                return .GreaterThanOrEqual
-            default:
-                return .Equal
-            }
-        }
+    public var target: AnyObject? {
+        return self.support
+    }
+    
+    internal let support: ConstraintLayoutSupport
+    
+    internal init(support: ConstraintLayoutSupport) {
+        self.support = support
+        
+    }
+    
+    public var top: ConstraintItem {
+        return ConstraintItem(target: self.target, attributes: ConstraintAttributes.top)
+    }
+    
+    public var bottom: ConstraintItem {
+        return ConstraintItem(target: self.target, attributes: ConstraintAttributes.bottom)
+    }
+    
+    public var height: ConstraintItem {
+        return ConstraintItem(target: self.target, attributes: ConstraintAttributes.height)
     }
 }

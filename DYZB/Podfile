@@ -5,6 +5,10 @@ target 'DYZB' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
    pod 'SnapKit'
+   pod 'Alamofire'
+   #pod 'SwiftyJSON'
+   pod 'Kingfisher'
+   pod 'ObjectMapper'
   # Pods for DYZB
 
 end

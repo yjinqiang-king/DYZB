@@ -8,8 +8,25 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class YJQHeaderCollectionReusableView: UICollectionReusableView {
+    
+    var modelInfo: YJQRecommandHeaderModel? {
+        didSet {
+            guard let model = modelInfo else {
+                return
+            }
+            self.tipLabel.text = model.tag_name
+            
+            let iconURL = URL(string: model.small_icon_url)
+            icon.kf.setImage(with: iconURL, placeholder: UIImage(named: "home_header_hot"))
+            if(model.tag_name == "颜值") {
+                icon.image = UIImage(named:"home_header_phone")
+            }
+        }
+    }
+    
     // MARK: - 懒加载属性
     private lazy var grayView: UIView = {
         let view = UIView()
@@ -18,7 +35,7 @@ class YJQHeaderCollectionReusableView: UICollectionReusableView {
     }()
     private lazy var icon: UIImageView = {
         let imgView = UIImageView(image: UIImage(named:"home_header_hot"))
-        imgView.contentMode = .center
+        imgView.contentMode = .scaleAspectFill
         return imgView
     }()
     private lazy var tipLabel: UILabel = {
@@ -58,11 +75,13 @@ extension YJQHeaderCollectionReusableView {
         self.addSubview(icon)
         icon.snp.makeConstraints { (make) in
             make.centerY.equalTo(self).offset(5)
+            make.height.width.equalTo(18)
             make.left.equalTo(self).offset(8)
         }
         self.addSubview(tipLabel)
         tipLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(icon)
+            make.height.equalTo(icon)
             make.left.equalTo(icon.snp.right).offset(8)
         }
         self.addSubview(moreBtn)

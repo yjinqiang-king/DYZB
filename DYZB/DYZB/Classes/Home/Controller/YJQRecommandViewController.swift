@@ -1,3 +1,4 @@
+
 //
 //  YJQRecommandViewController.swift
 //  DYZB
@@ -7,6 +8,7 @@
 //
 
 import UIKit
+import Alamofire
 
 private let kItemMargin: CGFloat = 10
 private let kItemW: CGFloat = (kScreenWidth - 3 * kItemMargin) / 2
@@ -17,7 +19,22 @@ private let kNormalCellIdentifier = "kNormalCellIdentifier"
 private let kPrettyCellIdentifier = "kPrettyCellIdentifier"
 private let kHeaderViewIdentifier = "kHeaderViewIdentifier"
 
+
+
 class YJQRecommandViewController: UIViewController {
+    private var hotArr:NSArray = {
+        let arr = NSArray()
+        return arr
+    }()
+    private var faceArr:NSArray = {
+        let arr = NSArray()
+        return arr
+    }()
+    private var headerArr:NSArray = {
+        let arr = NSArray()
+        return arr
+    }()
+
     // MARK: - 懒加载属性
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -41,6 +58,7 @@ class YJQRecommandViewController: UIViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
         setupUI()
         // Do any additional setup after loading the view.
     }
@@ -50,6 +68,26 @@ class YJQRecommandViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+}
+// MARK: - 网络数据加载
+extension YJQRecommandViewController {
+    private func loadData() {
+//        let date = Date.getCurrentDate()
+//        let parameters = ["limit":"4", "offset":"0", "time":date]
+        YJQRecommandViewModel().requestData { (arr) in
+            if arr.count > 0 {
+            self.hotArr = arr[0] as! NSArray
+            self.faceArr = arr[1] as! NSArray
+            self.headerArr = arr[2] as! NSArray
+            }
+            self.collectionView.reloadData()
+        }
+//        YJQRecommandViewModel().loadOtherData(isHeaderPart: true, url: "http://capi.douyucdn.cn/api/v1/getHotCate", parameters: parameters) { (arr) in
+//            self.headerOther = arr
+//            self.collectionView.reloadData()
+//        }
+    }
+    
 }
 // MARK: - UI
 extension YJQRecommandViewController {
@@ -62,25 +100,37 @@ extension YJQRecommandViewController {
 // MARK: - 遵循UICollectionViewDataSource
 extension YJQRecommandViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 12
+        return self.headerArr.count
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 8
+            return self.hotArr.count
+        }else if(section >= 2) {
+            let json = self.headerArr[section] as? YJQRecommandHeaderModel
+            return (json?.room_list.count)!
+        }else {
+        return self.faceArr.count
         }
-        return 4
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell: UICollectionViewCell
         if indexPath.section == 1 {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: kPrettyCellIdentifier, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kPrettyCellIdentifier, for: indexPath) as! YJQPrettyCollectionViewCell
+            cell.faceInfo = self.faceArr[indexPath.item] as? YJQRecommandModel
+            return cell
         }else {
-            cell =  collectionView.dequeueReusableCell(withReuseIdentifier: kNormalCellIdentifier, for: indexPath)
+            let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: kNormalCellIdentifier, for: indexPath) as! YJQNormalCollectionViewCell
+            if indexPath.section == 0 {
+                cell.hotInfo = self.hotArr[indexPath.item] as? YJQRecommandModel
+            }else {
+            let json = self.headerArr[indexPath.section] as? YJQRecommandHeaderModel
+                cell.hotInfo = json?.room_list[indexPath.item]
+            }
+            return cell
         }
-        return cell
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: kHeaderViewIdentifier, for: indexPath)
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: kHeaderViewIdentifier, for: indexPath) as! YJQHeaderCollectionReusableView
+        headerView.modelInfo = self.headerArr[indexPath.section] as? YJQRecommandHeaderModel
         return headerView
     }
 }

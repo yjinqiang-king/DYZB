@@ -9,6 +9,19 @@
 import UIKit
 
 class YJQNormalCollectionViewCell: UICollectionViewCell {
+    
+    var hotInfo: YJQRecommandModel? {
+        didSet {
+            guard let info = hotInfo else {
+                return
+            }
+            let url = URL(string: info.vertical_src)
+            bigImgView.kf.setImage(with: url, placeholder: UIImage(named: "home_live_cate_normal"))
+            nameLable.text = info.nickname
+            numberLabel.text = info.online ?? "" + "在线"
+            tipLabel.text = info.room_name
+        }
+    }
     // MARK: - 懒加载属性
     private lazy var bigImgView: UIImageView = {
         let imgView = UIImageView()
@@ -91,11 +104,12 @@ extension YJQNormalCollectionViewCell {
         }
         self.bigImgView.addSubview(self.numberLabel)
         self.numberLabel.snp.makeConstraints { (make) in
-            make.right.bottom.equalTo(-5)
+            make.right.equalTo(self.bigImgView)
+            make.centerY.equalTo(self.nameLable)
         }
         self.bigImgView.addSubview(self.personImgView)
         self.personImgView.snp.makeConstraints { (make) in
-            make.right.equalTo(self.numberLabel.snp.left).offset(-5)
+            make.right.equalTo(self.numberLabel.snp.left)
             make.centerY.equalTo(self.numberLabel)
         }
     }

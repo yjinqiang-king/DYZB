@@ -103,7 +103,6 @@ extension YJQPageTitleView {
 extension YJQPageTitleView {
     @objc private func labelClick(gesture:UIGestureRecognizer) {
         let label = gesture.view as! UILabel
-        let number = label.tag - currentIndex
         let beforeLabel = labels[currentIndex]
         beforeLabel.textColor = UIColor(r: kNormalColor.0, g: kNormalColor.1, b: kNormalColor.2, alpha: 1.0)
         label.textColor = UIColor(r: kSelectedColcor.0, g: kSelectedColcor.1, b: kSelectedColcor.2, alpha: 1.0)

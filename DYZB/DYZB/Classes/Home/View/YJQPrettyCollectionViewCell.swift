@@ -7,8 +7,24 @@
 //
 
 import UIKit
+import Kingfisher
 
 class YJQPrettyCollectionViewCell: UICollectionViewCell {
+    
+    var faceInfo: YJQRecommandModel? {
+        didSet {
+            guard let info = faceInfo else {
+                return
+            }
+            let url = URL(string: info.vertical_src)
+            bigImgView.kf.setImage(with: url, placeholder: UIImage(named: "live_cell_default_phone"))
+            numberLabel.text = "在线"+"\(String(describing: info.online))"+"人"
+            tipLabel.text = info.room_name
+            mapLabel.text = info.anchor_city
+            
+        }
+    }
+    
     // MARK: - 懒加载属性
     private lazy var bigImgView: UIImageView = {
         let imgView = UIImageView()

@@ -14,28 +14,33 @@ private let kItemMargin: CGFloat = 10
 private let kItemW: CGFloat = (kScreenWidth - 3 * kItemMargin) / 2
 private let kItemH: CGFloat = kItemW * 3 / 4
 private let kPrettyItemH: CGFloat = kItemW * 4 / 3
+private let kCycleViewH: CGFloat = kScreenWidth * 3 / 8
 private let kHeaderViewH: CGFloat = 50
 private let kNormalCellIdentifier = "kNormalCellIdentifier"
 private let kPrettyCellIdentifier = "kPrettyCellIdentifier"
 private let kHeaderViewIdentifier = "kHeaderViewIdentifier"
 
-
-
 class YJQRecommandViewController: UIViewController {
-    private var hotArr:NSArray = {
+    
+    // MARK: - 懒加载属性
+    private lazy var cycleView: YJQCycleView = {
+        let cycleView = YJQCycleView(frame: CGRect(x: 0, y: -kCycleViewH, width: kScreenWidth, height: kCycleViewH))
+        return cycleView
+    }()
+    private let recommandVM = YJQRecommandViewModel()
+    private lazy var hotArr:NSArray = {
         let arr = NSArray()
         return arr
     }()
-    private var faceArr:NSArray = {
+    private lazy var faceArr:NSArray = {
         let arr = NSArray()
         return arr
     }()
-    private var headerArr:NSArray = {
+    private lazy var headerArr:NSArray = {
         let arr = NSArray()
         return arr
     }()
 
-    // MARK: - 懒加载属性
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: kItemW, height: kItemH)
@@ -49,6 +54,8 @@ class YJQRecommandViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.delegate = self
+        // 设置contentInset
+        collectionView.contentInset = UIEdgeInsetsMake(kCycleViewH, 0, 0, 0)
         //根据父控件的大小缩放
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.register(YJQNormalCollectionViewCell.self, forCellWithReuseIdentifier: kNormalCellIdentifier)
@@ -72,8 +79,6 @@ class YJQRecommandViewController: UIViewController {
 // MARK: - 网络数据加载
 extension YJQRecommandViewController {
     private func loadData() {
-//        let date = Date.getCurrentDate()
-//        let parameters = ["limit":"4", "offset":"0", "time":date]
         YJQRecommandViewModel().requestData { (arr) in
             if arr.count > 0 {
             self.hotArr = arr[0] as! NSArray
@@ -82,12 +87,14 @@ extension YJQRecommandViewController {
             }
             self.collectionView.reloadData()
         }
-//        YJQRecommandViewModel().loadOtherData(isHeaderPart: true, url: "http://capi.douyucdn.cn/api/v1/getHotCate", parameters: parameters) { (arr) in
-//            self.headerOther = arr
-//            self.collectionView.reloadData()
-//        }
+        loadCycleData()
     }
-    
+    // 加载cycleView的数据
+    private func loadCycleData() {
+        YJQRecommandViewModel().loadCycleData {
+            self.cycleView.model = self.recommandVM.cycleModels
+        }
+    }
 }
 // MARK: - UI
 extension YJQRecommandViewController {
@@ -95,6 +102,7 @@ extension YJQRecommandViewController {
         view.backgroundColor = UIColor.white
         view.addSubview(collectionView)
         collectionView.frame = view.bounds
+        collectionView.addSubview(cycleView)
     }
 }
 // MARK: - 遵循UICollectionViewDataSource

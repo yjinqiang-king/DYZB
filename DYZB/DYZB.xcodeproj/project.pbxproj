@@ -29,6 +29,9 @@
 		1459D07B204FB4E700BC38BE /* YJQPageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459D07A204FB4E700BC38BE /* YJQPageTitleView.swift */; };
 		1459D07D204FB6D400BC38BE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459D07C204FB6D400BC38BE /* UIColor+Extension.swift */; };
 		1459D07F2050D65200BC38BE /* YJQPageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1459D07E2050D65200BC38BE /* YJQPageContentView.swift */; };
+		14BD31BE2060A55F0071560D /* YJQCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD31BD2060A55F0071560D /* YJQCycleView.swift */; };
+		14BD31C02060B1330071560D /* YJQCycleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD31BF2060B1330071560D /* YJQCycleModel.swift */; };
+		14BD31C22060BC580071560D /* YJQCycleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD31C12060BC580071560D /* YJQCycleCollectionViewCell.swift */; };
 		888B24D4E4DEEEEDADC846FF /* Pods_DYZB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36ADEFD66C45142A61F7BDC /* Pods_DYZB.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +61,9 @@
 		1459D07A204FB4E700BC38BE /* YJQPageTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQPageTitleView.swift; sourceTree = "<group>"; };
 		1459D07C204FB6D400BC38BE /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		1459D07E2050D65200BC38BE /* YJQPageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQPageContentView.swift; sourceTree = "<group>"; };
+		14BD31BD2060A55F0071560D /* YJQCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQCycleView.swift; sourceTree = "<group>"; };
+		14BD31BF2060B1330071560D /* YJQCycleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQCycleModel.swift; sourceTree = "<group>"; };
+		14BD31C12060BC580071560D /* YJQCycleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQCycleCollectionViewCell.swift; sourceTree = "<group>"; };
 		5AC92F7F54D862289D14432E /* Pods-DYZB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DYZB.release.xcconfig"; path = "Pods/Target Support Files/Pods-DYZB/Pods-DYZB.release.xcconfig"; sourceTree = "<group>"; };
 		C36ADEFD66C45142A61F7BDC /* Pods_DYZB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DYZB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -181,6 +187,7 @@
 			children = (
 				140CD2D02057B7B3004E0D15 /* YJQRecommandModel.swift */,
 				140CD2D2205F84AE004E0D15 /* YJQRecommandHeaderModel.swift */,
+				14BD31BF2060B1330071560D /* YJQCycleModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -191,6 +198,8 @@
 				140CD2BC20526D53004E0D15 /* YJQHeaderCollectionReusableView.swift */,
 				140CD2BE20561E13004E0D15 /* YJQNormalCollectionViewCell.swift */,
 				140CD2C020561EA1004E0D15 /* YJQPrettyCollectionViewCell.swift */,
+				14BD31BD2060A55F0071560D /* YJQCycleView.swift */,
+				14BD31C12060BC580071560D /* YJQCycleCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -485,6 +494,9 @@
 				140CD2C62056740E004E0D15 /* YJQNetworkTool.swift in Sources */,
 				140CD2C120561EA1004E0D15 /* YJQPrettyCollectionViewCell.swift in Sources */,
 				1459D06C204F8AA200BC38BE /* YJQNaVViewController.swift in Sources */,
+				14BD31C22060BC580071560D /* YJQCycleCollectionViewCell.swift in Sources */,
+				14BD31C02060B1330071560D /* YJQCycleModel.swift in Sources */,
+				14BD31BE2060A55F0071560D /* YJQCycleView.swift in Sources */,
 				140CD2BB20526123004E0D15 /* YJQRecommandViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

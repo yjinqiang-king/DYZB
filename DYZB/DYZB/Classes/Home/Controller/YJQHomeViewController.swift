@@ -22,7 +22,8 @@ class YJQHomeViewController: UIViewController {
         let contentFrame = CGRect(x: 0, y: contentViewY, width: kScreenWidth, height: kScreenHeight - contentViewY - kTabbarHeight)
         var childVCs = [UIViewController]()
         childVCs.append(YJQRecommandViewController())
-        for i in 0..<3 {
+        childVCs.append(YJQGameViewController())  
+        for i in 0..<2 {
             let vc = UIViewController()
             vc.view.backgroundColor = UIColor(r: CGFloat(arc4random_uniform(255)), g: CGFloat(arc4random_uniform(255)), b: CGFloat(arc4random_uniform(255)), alpha: 1.0)
             childVCs.append(vc)

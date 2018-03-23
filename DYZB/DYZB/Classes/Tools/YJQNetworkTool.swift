@@ -27,7 +27,7 @@ class YJQNetworkTool {
             
             // 3.获取结果
             guard let result = response.result.value else {
-                print(response.result.error)
+                print(response.result.error as Any)
                 return
             }
             
@@ -41,7 +41,7 @@ class YJQNetworkTool {
 
         Alamofire.request(url,method: method,parameters: parameters,encoding:URLEncoding.default, headers:nil).responseJSON { (response) in
             guard let result = response.result.value else {
-                print(response.result.error)
+                print(response.result.error as Any)
                 return
             }
             finishedCallBack(result)

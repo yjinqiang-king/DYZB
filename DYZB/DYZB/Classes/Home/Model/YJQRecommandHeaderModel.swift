@@ -19,11 +19,11 @@ class YJQRecommandHeaderModel: NSObject,Mappable {
     
     func mapping(map: Map) {
         tag_name <- map["tag_name"]
-        small_icon_url <- map["small_icon_url"]
+        icon_url <- map["icon_url"]
         room_list <- map["room_list"]
     }
     
     var tag_name: String = ""
-    var small_icon_url: String = ""
+    var icon_url: String = ""
     var room_list = [YJQRecommandModel]()
 }

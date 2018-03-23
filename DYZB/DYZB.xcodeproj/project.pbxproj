@@ -32,6 +32,11 @@
 		14BD31BE2060A55F0071560D /* YJQCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD31BD2060A55F0071560D /* YJQCycleView.swift */; };
 		14BD31C02060B1330071560D /* YJQCycleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD31BF2060B1330071560D /* YJQCycleModel.swift */; };
 		14BD31C22060BC580071560D /* YJQCycleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD31C12060BC580071560D /* YJQCycleCollectionViewCell.swift */; };
+		14BD31C4206245C10071560D /* YJQGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD31C3206245C10071560D /* YJQGameViewController.swift */; };
+		14BD31C620624F280071560D /* YJQGameChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD31C520624F280071560D /* YJQGameChoiceView.swift */; };
+		14BD31C8206257F00071560D /* YJQGameChioceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD31C7206257F00071560D /* YJQGameChioceCollectionViewCell.swift */; };
+		14BD31CA2064AD780071560D /* YJQGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD31C92064AD780071560D /* YJQGameViewModel.swift */; };
+		14BD31CC2064C4DA0071560D /* YJQBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD31CB2064C4DA0071560D /* YJQBaseViewController.swift */; };
 		888B24D4E4DEEEEDADC846FF /* Pods_DYZB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C36ADEFD66C45142A61F7BDC /* Pods_DYZB.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +69,11 @@
 		14BD31BD2060A55F0071560D /* YJQCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQCycleView.swift; sourceTree = "<group>"; };
 		14BD31BF2060B1330071560D /* YJQCycleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQCycleModel.swift; sourceTree = "<group>"; };
 		14BD31C12060BC580071560D /* YJQCycleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQCycleCollectionViewCell.swift; sourceTree = "<group>"; };
+		14BD31C3206245C10071560D /* YJQGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQGameViewController.swift; sourceTree = "<group>"; };
+		14BD31C520624F280071560D /* YJQGameChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQGameChoiceView.swift; sourceTree = "<group>"; };
+		14BD31C7206257F00071560D /* YJQGameChioceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQGameChioceCollectionViewCell.swift; sourceTree = "<group>"; };
+		14BD31C92064AD780071560D /* YJQGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQGameViewModel.swift; sourceTree = "<group>"; };
+		14BD31CB2064C4DA0071560D /* YJQBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YJQBaseViewController.swift; sourceTree = "<group>"; };
 		5AC92F7F54D862289D14432E /* Pods-DYZB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DYZB.release.xcconfig"; path = "Pods/Target Support Files/Pods-DYZB/Pods-DYZB.release.xcconfig"; sourceTree = "<group>"; };
 		C36ADEFD66C45142A61F7BDC /* Pods_DYZB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DYZB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -84,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				140CD2CE2057A823004E0D15 /* YJQRecommandViewModel.swift */,
+				14BD31C92064AD780071560D /* YJQGameViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -178,6 +189,7 @@
 			children = (
 				1459D06D204F8AF700BC38BE /* YJQHomeViewController.swift */,
 				140CD2BA20526123004E0D15 /* YJQRecommandViewController.swift */,
+				14BD31C3206245C10071560D /* YJQGameViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -200,6 +212,8 @@
 				140CD2C020561EA1004E0D15 /* YJQPrettyCollectionViewCell.swift */,
 				14BD31BD2060A55F0071560D /* YJQCycleView.swift */,
 				14BD31C12060BC580071560D /* YJQCycleCollectionViewCell.swift */,
+				14BD31C520624F280071560D /* YJQGameChoiceView.swift */,
+				14BD31C7206257F00071560D /* YJQGameChioceCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -251,6 +265,7 @@
 			children = (
 				1459D069204F8A7D00BC38BE /* YJQTabBarViewController.swift */,
 				1459D06B204F8AA200BC38BE /* YJQNaVViewController.swift */,
+				14BD31CB2064C4DA0071560D /* YJQBaseViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -474,13 +489,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14BD31C4206245C10071560D /* YJQGameViewController.swift in Sources */,
 				1459D077204F973200BC38BE /* Common.swift in Sources */,
 				1459D07B204FB4E700BC38BE /* YJQPageTitleView.swift in Sources */,
 				1459D07F2050D65200BC38BE /* YJQPageContentView.swift in Sources */,
+				14BD31C8206257F00071560D /* YJQGameChioceCollectionViewCell.swift in Sources */,
 				140CD2D3205F84AE004E0D15 /* YJQRecommandHeaderModel.swift in Sources */,
 				140CD2CF2057A823004E0D15 /* YJQRecommandViewModel.swift in Sources */,
 				140CD2BF20561E13004E0D15 /* YJQNormalCollectionViewCell.swift in Sources */,
 				1459D03C204F824700BC38BE /* AppDelegate.swift in Sources */,
+				14BD31CC2064C4DA0071560D /* YJQBaseViewController.swift in Sources */,
 				1459D07D204FB6D400BC38BE /* UIColor+Extension.swift in Sources */,
 				1459D070204F8B0600BC38BE /* YJQLiveViewController.swift in Sources */,
 				1459D06A204F8A7D00BC38BE /* YJQTabBarViewController.swift in Sources */,
@@ -489,6 +507,7 @@
 				1459D06E204F8AF700BC38BE /* YJQHomeViewController.swift in Sources */,
 				1459D074204F8B2C00BC38BE /* YJQProfileViewController.swift in Sources */,
 				1459D072204F8B1600BC38BE /* YJQFollowViewController.swift in Sources */,
+				14BD31C620624F280071560D /* YJQGameChoiceView.swift in Sources */,
 				140CD2CC2057A607004E0D15 /* NSDate+Extension.swift in Sources */,
 				1459D079204F976E00BC38BE /* UIBarButtonItem+Extension.swift in Sources */,
 				140CD2C62056740E004E0D15 /* YJQNetworkTool.swift in Sources */,
@@ -498,6 +517,7 @@
 				14BD31C02060B1330071560D /* YJQCycleModel.swift in Sources */,
 				14BD31BE2060A55F0071560D /* YJQCycleView.swift in Sources */,
 				140CD2BB20526123004E0D15 /* YJQRecommandViewController.swift in Sources */,
+				14BD31CA2064AD780071560D /* YJQGameViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,6 +638,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5474VNG8H5;
 				INFOPLIST_FILE = DYZB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yjq.www.DYZB;
@@ -634,6 +655,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5474VNG8H5;
 				INFOPLIST_FILE = DYZB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yjq.www.DYZB;

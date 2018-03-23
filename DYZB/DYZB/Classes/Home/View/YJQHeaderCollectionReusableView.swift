@@ -19,7 +19,7 @@ class YJQHeaderCollectionReusableView: UICollectionReusableView {
             }
             self.tipLabel.text = model.tag_name
             
-            let iconURL = URL(string: model.small_icon_url)
+            let iconURL = URL(string: model.icon_url)
             icon.kf.setImage(with: iconURL, placeholder: UIImage(named: "home_header_hot"))
             if(model.tag_name == "颜值") {
                 icon.image = UIImage(named:"home_header_phone")

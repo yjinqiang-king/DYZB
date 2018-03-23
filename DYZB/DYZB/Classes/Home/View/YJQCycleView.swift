@@ -17,6 +17,11 @@ class YJQCycleView: UIView {
         didSet {
             self.collectionView.reloadData()
             self.pageControl.numberOfPages = model?.count ?? 0
+            // MARK: - 放在设置数据里面
+            let indexPath = IndexPath(item: 6 * 100, section: 0)
+            collectionView.scrollToItem(at: indexPath, at: .left, animated: false)
+            removeTimer()
+            creatTimer()
         }
     }
     // MARK: - 系统方法
@@ -59,11 +64,11 @@ extension YJQCycleView {
     private func setupUI() {
         self.backgroundColor = UIColor.cyan
         self.addSubview(self.collectionView)
-        // MARK: - 放在设置数据里面
-        let indexPath = IndexPath(item: 6 * 100, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .left, animated: false)
-        removeTimer()
-        creatTimer()
+//        // MARK: - 放在设置数据里面
+//        let indexPath = IndexPath(item: 6 * 100, section: 0)
+//        collectionView.scrollToItem(at: indexPath, at: .left, animated: false)
+//        removeTimer()
+//        creatTimer()
         
 //        self.collectionView.snp.makeConstraints { (make) in
 //            make.edges.equalTo(self)
@@ -78,12 +83,12 @@ extension YJQCycleView {
 // MARK: - UICollectionViewDataSource
 extension YJQCycleView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return (self.model?.count ?? 0) * 10000
-        return 6 * 10000
+        return (self.model?.count ?? 0) * 10000
+//        return 6 * 10000
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCycleCellID, for: indexPath) as! YJQCycleCollectionViewCell
-//        cell.model = model?[indexPath.item]
+        cell.model = model?[indexPath.item % (model?.count)!]
         return cell
     }
 }
@@ -98,8 +103,8 @@ extension YJQCycleView: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetX = scrollView.contentOffset.x + collectionView.bounds.width * 0.5
         
-//        self.pageControl.currentPage = Int(offsetX / collectionView.bounds.width) % (model?.count ?? 1)
-        self.pageControl.currentPage = Int(offsetX / collectionView.bounds.width) % 6
+        self.pageControl.currentPage = Int(offsetX / collectionView.bounds.width) % (model?.count ?? 1)
+//        self.pageControl.currentPage = Int(offsetX / collectionView.bounds.width) % 6
     }
 }
 // MARK: - 定时器

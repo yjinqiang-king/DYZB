@@ -18,7 +18,7 @@ class YJQRecommandViewModel {
 }
 // MARK: - 发送网络请求
 extension YJQRecommandViewModel {
-    
+    // 2-12 数据
     func loadOtherData(isHeaderPart: Bool, url: String, parameters: [String : Any], finishedCallBack:((_ arr: NSArray)->())) {
         YJQNetworkTool.requestData3(.get, url: url, parameters: parameters, encoding: nil, headers: nil) { (result) in
             guard let dataResult = result as? [String : NSObject] else{return}
@@ -26,11 +26,11 @@ extension YJQRecommandViewModel {
             if isHeaderPart {
                 let model1 = YJQRecommandHeaderModel()
                 model1.tag_name = "热门"
-                model1.small_icon_url = "home_header_hot"
+                model1.icon_url = "home_header_hot"
                 self.headerArray.add(model1)
                 let model2 = YJQRecommandHeaderModel()
                 model2.tag_name = "颜值"
-                model2.small_icon_url = "home_header_phone"
+                model2.icon_url = "home_header_phone"
                 self.headerArray.add(model2)
                 for json in dataArr {
                     guard let model = Mapper<YJQRecommandHeaderModel>().map(JSON: json)else {return}
@@ -40,7 +40,7 @@ extension YJQRecommandViewModel {
         }
         finishedCallBack(self.headerArray)
     }
-
+    
     func requestData( finishedCallBack: @escaping (_ arr: NSArray)->() ) {
         let date = Date.getCurrentDate()
         let parameters = ["limit":"4", "offset":"0", "time":date]
@@ -48,6 +48,7 @@ extension YJQRecommandViewModel {
         let dGroup = DispatchGroup()
         
         dGroup.enter()
+        // 第一组 热门 数据
         YJQNetworkTool.requestData3(.get, url: "http://capi.douyucdn.cn/api/v1/getbigDataRoom", parameters: parameters, encoding: nil, headers: nil) { (result) in
             
             guard let resultDict = result as? [String : NSObject] else { return }
@@ -60,6 +61,7 @@ extension YJQRecommandViewModel {
         }
 
         dGroup.enter()
+        // 第二组 颜值 数据
         YJQNetworkTool.requestData3(.get, url: "http://capi.douyucdn.cn/api/v1/getVerticalRoom", parameters: parameters, encoding: nil, headers: nil) { (result) in
             guard let resultDict = result as? [String : NSObject] else {return}
             guard let dateArr = resultDict["data"] as? [[String : NSObject]] else {return}
@@ -71,6 +73,7 @@ extension YJQRecommandViewModel {
         }
         
         dGroup.enter()
+        // 第2-12组数据
         loadOtherData(isHeaderPart: true, url: "http://capi.douyucdn.cn/api/v1/getHotCate", parameters: parameters) {_ in
             dGroup.leave()
         }
@@ -82,8 +85,8 @@ extension YJQRecommandViewModel {
             finishedCallBack(self.dataArray.copy() as! NSArray)
         }
     }
-    
-    func loadCycleData(finishedCallBack:@escaping (()->())) {
+    // 无限轮播器数据
+    func loadCycleData(finishedCallBack:@escaping ((_ arr: [YJQCycleModel])->())) {
         YJQNetworkTool.requestData3(.get, url: "http://www.douyutv.com/api/v1/slide/6", parameters: ["version": "2.300"], encoding: nil, headers: nil) { (result) in
             guard let resultDict = result as? [String: NSObject] else {return}
             guard let dataArr = resultDict["data"] as? [[String: Any]] else {return}
@@ -91,7 +94,7 @@ extension YJQRecommandViewModel {
                 guard let model = Mapper<YJQCycleModel>().map(JSON: json) else {return}
                 self.cycleModels.append(model)
             }
-            finishedCallBack()
+            finishedCallBack(self.cycleModels)
         }
     }
 }
